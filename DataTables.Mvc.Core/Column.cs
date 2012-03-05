@@ -86,8 +86,8 @@ namespace DataTables.Mvc.Core
                     sb.AppendFormat("mDataProp: {0},", columnNumber);
 
                 //Function
-                if (_dataPropertyIsFunction)
-                    sb.AppendFormat("fnRender: function(source, type, val) {{{0}}},", _dataProperty);
+                else if (_dataPropertyIsFunction)
+                    sb.AppendFormat("mDataProp: function(source, type, val) {{{0}}},", _dataProperty);
                 
                 else
                     sb.AppendFormat("mDataProp: '{0}',", _dataProperty);

@@ -1,0 +1,17 @@
+﻿@model List<DataTables.Mvc.Demo.Models.GridTestModel>
+@using DataTables.Mvc.Core
+
+@{
+    ViewBag.Title = "Default";
+}
+
+<h2>Default</h2>
+
+@Html.GridHtml("testGrid")
+
+
+@(Html.GridScriptForModel("#testGrid")
+    .AddColumn(new Column().DataProperty("Id").Title("ID"))
+    .AddColumn(new Column().DataProperty("Title").Title("Title"))
+    .AddColumn(new Column().DataProperty("Description").Title("Description"))
+)
