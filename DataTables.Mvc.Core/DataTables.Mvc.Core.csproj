@@ -47,7 +47,7 @@
   <ItemGroup>
     <Compile Include="Column.cs" />
     <Compile Include="Enum\ServerMode.cs" />
-    <Compile Include="Enum\SortOrder.cs" />
+    <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

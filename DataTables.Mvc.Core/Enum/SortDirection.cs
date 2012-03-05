@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataTables.Mvc.Core.Enum
 {
-    public enum SortOrder
+    public enum SortDirection
     {
         Asc,
         Desc

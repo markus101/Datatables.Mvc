@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace DataTables.Mvc.Core
 {
@@ -37,6 +38,16 @@ namespace DataTables.Mvc.Core
         public static Grid GridScript(this HtmlHelper html, string selector)
         {
             return new Grid(selector);
+        }
+
+        public static Grid GridScriptForModel(this HtmlHelper html, string selector)
+        {
+            var model = html.ViewData.Model;
+
+            if (model == null)
+                throw new ArgumentException("Model is invalid");
+
+            return new Grid(selector).AData(JsonConvert.SerializeObject(model));
         }
     }
 }

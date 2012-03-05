@@ -10,6 +10,7 @@ namespace DataTables.Mvc.Core
         private bool? _sortable;
         private bool? _visible;
         private string _dataProperty;
+        private bool _dataPropertyIsFunction;
         private string _class;
         private string _defaultContent;
         private string _title;
@@ -28,9 +29,10 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Column DataProperty(string dataProperty)
+        public Column DataProperty(string dataProperty, bool isFunction = false)
         {
             _dataProperty = dataProperty;
+            _dataPropertyIsFunction = isFunction;
             return this;
         }
 
@@ -76,7 +78,20 @@ namespace DataTables.Mvc.Core
                 sb.AppendFormat("sWidth: '{0}',", _width);
 
             if (!String.IsNullOrWhiteSpace(_dataProperty))
-                sb.AppendFormat("mDataProp: '{0}',", _dataProperty);
+            {
+                int columnNumber;
+
+                //Integer
+                if (Int32.TryParse(_dataProperty, out columnNumber))
+                    sb.AppendFormat("mDataProp: {0},", columnNumber);
+
+                //Function
+                if (_dataPropertyIsFunction)
+                    sb.AppendFormat("fnRender: function(source, type, val) {{{0}}},", _dataProperty);
+                
+                else
+                    sb.AppendFormat("mDataProp: '{0}',", _dataProperty);
+            }
 
             if (!String.IsNullOrWhiteSpace(_class))
                 sb.AppendFormat("sClass: '{0}',", _class);

@@ -11,11 +11,6 @@
 
 @Html.GridHtml("testGrid")
 
-<table id="testGrid">
-    <thead></thead>
-    <tbody></tbody>
-</table>
-
 @( Html.GridScript("#testGrid").AData(Html.Raw(Model).ToString())
        .AddColumn(new Column().DataProperty("Id").Title("ID"))
        .AddColumn(new Column().DataProperty("Title").Title("Title"))

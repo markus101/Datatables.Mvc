@@ -14,7 +14,16 @@ namespace DataTables.Mvc.Web.Controllers
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            return View();
+            var model = new List<TestGridModel>
+                            {
+                                new TestGridModel{ Id = 1, Title = "Title1", Description = "This is a description" },
+                                new TestGridModel{ Id = 2, Title = "Title2", Description = "This is a description" },
+                                new TestGridModel{ Id = 3, Title = "Title3", Description = "This is a description" },
+                                new TestGridModel{ Id = 4, Title = "Title4", Description = "This is a description" }
+                            };
+
+
+            return View(model);
         }
 
         public ActionResult About()
