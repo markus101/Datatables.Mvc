@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTables.Mvc.Core", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTables.Mvc.Demo", "DataTables.Mvc.Demo\DataTables.Mvc.Demo.csproj", "{291E858C-26B1-4CC5-8C71-B2376D17371A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTables.Mvc.Test", "DataTables.Mvc.Test\DataTables.Mvc.Test.csproj", "{64724970-CD2D-4DE1-B1D1-24132B6FCE36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{2CB06BDB-71EF-4C20-A8F3-E9A2ED2E4C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CB06BDB-71EF-4C20-A8F3-E9A2ED2E4C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB06BDB-71EF-4C20-A8F3-E9A2ED2E4C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64724970-CD2D-4DE1-B1D1-24132B6FCE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64724970-CD2D-4DE1-B1D1-24132B6FCE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64724970-CD2D-4DE1-B1D1-24132B6FCE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64724970-CD2D-4DE1-B1D1-24132B6FCE36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

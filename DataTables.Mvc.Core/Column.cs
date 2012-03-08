@@ -99,9 +99,6 @@ namespace DataTables.Mvc.Core
             if (!String.IsNullOrWhiteSpace(_defaultContent))
                 sb.AppendFormat("sDefaultContent: '{0}',", _defaultContent);
 
-            if (!String.IsNullOrWhiteSpace(_title))
-                sb.AppendFormat("sTitle: '{0}',", _title);
-
             if (_sortable.HasValue)
                 sb.AppendFormat("bSortable: {0},", _sortable.ToString().ToLower());
 
