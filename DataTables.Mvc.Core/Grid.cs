@@ -207,7 +207,7 @@ namespace DataTables.Mvc.Core
                 dataTable.AppendLine(String.Format("\"bAutoWidth\": {0},", _autoWidth.ToString().ToLower()));
 
             if (!String.IsNullOrWhiteSpace(_paginationType))
-                dataTable.AppendLine(String.Format("\"sPaginationType\": {0},", _paginationType));
+                dataTable.AppendLine(String.Format("\"sPaginationType\": \"{0}\",", _paginationType));
 
             if (_saveState.HasValue)
                 dataTable.AppendLine(String.Format("\"bStateSave\": {0},", _saveState.ToString().ToLower()));
