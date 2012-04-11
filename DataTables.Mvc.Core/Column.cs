@@ -69,7 +69,7 @@ namespace DataTables.Mvc.Core
         public Column Link(string url, string text)
         {
             url = url.Replace("{", "' + row.aData[\"").Replace("}", "\"] + '");
-            text = text.Replace("{", "row.aData[\"").Replace("}", "\"]");
+            text = text.Replace("{", "' + row.aData[\"").Replace("}", "\"] + '").Trim('\'', '+', ' ');
 
             _renderFunction = String.Format("return '<a href=\"{0}\">' + {1} + '</a>';", url, text);
             return this;
