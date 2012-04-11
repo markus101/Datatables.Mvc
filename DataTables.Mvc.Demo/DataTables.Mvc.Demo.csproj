@@ -337,6 +337,7 @@
     <None Include="Scripts\DataTables-1.9.0\extras\TableTools\media\js\TableTools.min.js.gz" />
     <Content Include="Views\Home\Default.cshtml" />
     <Content Include="Views\Home\ComplexDataProp.cshtml" />
+    <Content Include="Views\Home\Link.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

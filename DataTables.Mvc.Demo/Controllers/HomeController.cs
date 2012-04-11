@@ -27,6 +27,11 @@ namespace DataTables.Mvc.Demo.Controllers
             return View(GetGridModels());
         }
 
+        public ActionResult Link()
+        {
+            return View(GetGridModels());
+        }
+
         private List<GridTestModel> GetGridModels()
         {
             var models = new List<GridTestModel>();
