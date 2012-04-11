@@ -66,6 +66,14 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Column Link(string url, string text)
+        {
+            url = url.Replace("{", "row.aData[\"").Replace("}", "\"]");
+
+            _renderFunction = String.Format("return \"<a href=\"{0}\">{1}</a>\";", url, text);
+            return this;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
