@@ -171,16 +171,16 @@ namespace DataTables.Mvc.Core
             dataTable.AppendLine("oTable = $('" + _selector + "').dataTable({");
 
             if (!String.IsNullOrWhiteSpace(_aData))
-                dataTable.AppendLine(String.Format("\"aaData\": {0},", _aData));
+                dataTable.AppendLine(String.Format("\"aaData\": \"{0}\",", _aData));
 
             if (!String.IsNullOrWhiteSpace(_ajaxSource))
-                dataTable.AppendLine(String.Format("\"sAjaxSource\": {0},", _ajaxSource));
+                dataTable.AppendLine(String.Format("\"sAjaxSource\": \"{0}\",", _ajaxSource));
 
             if (_serverSide.HasValue)
                 dataTable.AppendLine(String.Format("\"bServerSide\": {0},", _serverSide.ToString().ToLower()));
 
             if (!String.IsNullOrWhiteSpace(_ajaxDataProperty))
-                dataTable.AppendLine(String.Format("\"sAjaxDataProp\": {0},", _ajaxDataProperty));
+                dataTable.AppendLine(String.Format("\"sAjaxDataProp\": \"{0}\",", _ajaxDataProperty));
 
             if (_showProcessingMessage.HasValue)
                 dataTable.AppendLine(String.Format("\"bProcessing\": {0},", _showProcessingMessage));
@@ -216,7 +216,7 @@ namespace DataTables.Mvc.Core
                 dataTable.AppendLine(String.Format("\"iCookieDuration\": {0},", _cookieDuration));
 
             if (!String.IsNullOrWhiteSpace(_cookiePrefix))
-                dataTable.AppendLine(String.Format("\"sCookiePrefix\": {0},", _cookiePrefix));
+                dataTable.AppendLine(String.Format("\"sCookiePrefix\": \"{0}\",", _cookiePrefix));
 
             //Set the sorting order
             if (_sorting != null && _sorting.Count > 0)
@@ -224,7 +224,7 @@ namespace DataTables.Mvc.Core
 
             //Use GET or POST if assigned
             if (!String.IsNullOrWhiteSpace(_ajaxSource))
-                dataTable.AppendLine(String.Format("\"sServerMethod \": {0},", _serverMode));
+                dataTable.AppendLine(String.Format("\"sServerMethod \": \"{0}\",", _serverMode));
 
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
