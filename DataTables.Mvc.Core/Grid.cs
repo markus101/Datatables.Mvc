@@ -171,7 +171,7 @@ namespace DataTables.Mvc.Core
             dataTable.AppendLine("oTable = $('" + _selector + "').dataTable({");
 
             if (!String.IsNullOrWhiteSpace(_aData))
-                dataTable.AppendLine(String.Format("\"aaData\": \"{0}\",", _aData));
+                dataTable.AppendLine(String.Format("\"aaData\": {0},", _aData));
 
             if (!String.IsNullOrWhiteSpace(_ajaxSource))
                 dataTable.AppendLine(String.Format("\"sAjaxSource\": \"{0}\",", _ajaxSource));
