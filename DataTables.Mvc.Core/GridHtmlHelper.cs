@@ -49,5 +49,30 @@ namespace DataTables.Mvc.Core
 
             return new Grid(selector).AData(JsonConvert.SerializeObject(model));
         }
+
+        public static Grid GridScript(this HtmlHelper html, IEnumerable<object> collection, string selector)
+        {
+            if (collection == null)
+                throw new ArgumentException("Collection is invalid");
+
+            return new Grid(selector).AData(JsonConvert.SerializeObject(collection));
+        }
+
+        public static Grid GridScriptFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string selector)
+        {
+            var memberEx = expression.Body as MemberExpression;
+
+            if (memberEx == null)
+                throw new ArgumentException("Body not a member-expression.");
+
+            string name = memberEx.Member.Name;
+            var model = html.ViewData.Model;
+            var value = model.GetType().GetProperty(name).GetValue(model, null);
+
+            if (value == null)
+                throw new ArgumentException("Collection is invalid");
+
+            return new Grid(selector).AData(JsonConvert.SerializeObject(value));
+        }
     }
 }

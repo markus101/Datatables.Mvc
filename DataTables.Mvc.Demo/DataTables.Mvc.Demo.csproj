@@ -107,6 +107,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdvancedModel.cs" />
     <Compile Include="Models\GridTestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -338,6 +339,7 @@
     <Content Include="Views\Home\Default.cshtml" />
     <Content Include="Views\Home\ComplexDataProp.cshtml" />
     <Content Include="Views\Home\Link.cshtml" />
+    <Content Include="Views\Home\AdvancedModel.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

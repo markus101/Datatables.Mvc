@@ -32,6 +32,17 @@ namespace DataTables.Mvc.Demo.Controllers
             return View(GetGridModels());
         }
 
+        public ActionResult AdvancedModel()
+        {
+            var model = new AdvancedModel
+                            {
+                                Name = "Test",
+                                GridTestModels = GetGridModels()
+                            };
+
+            return View(model);
+        }
+
         private List<GridTestModel> GetGridModels()
         {
             var models = new List<GridTestModel>();

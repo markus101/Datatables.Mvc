@@ -1,0 +1,27 @@
+﻿@using DataTables.Mvc.Core
+@model DataTables.Mvc.Demo.Models.AdvancedModel
+@{
+    ViewBag.Title = "AdvancedModel";
+}
+
+<h2>AdvancedModel - Example 1</h2>
+
+@Html.GridHtml("testGrid")
+
+@(
+    Html.GridScript(Model.GridTestModels, "#testGrid")
+    .AddColumn(new Column().DataProperty("Id").Title("ID"))
+    .AddColumn(new Column().DataProperty("Title").Title("Title"))
+    .AddColumn(new Column().DataProperty("Description").Title("Description"))
+      )
+
+<h2>AdvancedModel - Example 1</h2>
+
+@Html.GridHtml("testGrid2")
+
+@(
+    Html.GridScriptFor(m => m.GridTestModels, "#testGrid2")
+    .AddColumn(new Column().DataProperty("Id").Title("ID"))
+    .AddColumn(new Column().DataProperty("Title").Title("Title"))
+    .AddColumn(new Column().DataProperty("Description").Title("Description"))
+)
