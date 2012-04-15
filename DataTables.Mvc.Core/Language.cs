@@ -14,25 +14,25 @@ namespace DataTables.Mvc.Core
 
         public Language EmptyTable(string message)
         {
-            _emptyTable = message;
+            _emptyTable = message.Replace("\"", "\\\"");
             return this;
         }
 
         public Language ZeroRecords(string message)
         {
-            _zeroRecords = message;
+            _zeroRecords = message.Replace("\"", "\\\"");
             return this;
         }
 
         public Language LoadingRecords(string message)
         {
-            _loadingRecords = message;
+            _loadingRecords = message.Replace("\"", "\\\"");
             return this;
         }
 
         public Language Processing(string message)
         {
-            _processing = message;
+            _processing = message.Replace("\"", "\\\"");
             return this;
         }
 
@@ -42,16 +42,16 @@ namespace DataTables.Mvc.Core
             sb.Append("\"oLanguage\": { ");
             
             if (!String.IsNullOrWhiteSpace(_emptyTable))
-                sb.AppendFormat("sEmptyTable: '{0}',", _emptyTable);
+                sb.AppendFormat("sEmptyTable: \"{0}\",", _emptyTable);
 
             if (!String.IsNullOrWhiteSpace(_zeroRecords))
-                sb.AppendFormat("sZeroRecords: '{0}',", _zeroRecords);
+                sb.AppendFormat("sZeroRecords: \"{0}\",", _zeroRecords);
 
             if (!String.IsNullOrWhiteSpace(_loadingRecords))
-                sb.AppendFormat("sLoadingRecords: '{0}',", _loadingRecords);
+                sb.AppendFormat("sLoadingRecords: \"{0}\",", _loadingRecords);
 
             if (!String.IsNullOrWhiteSpace(_processing))
-                sb.AppendFormat("sProcessing: '{0}',", _processing);
+                sb.AppendFormat("sProcessing: \"{0}\",", _processing);
 
             //Close the column
             sb.Append(" },");
