@@ -50,6 +50,7 @@
     <Compile Include="Enum\SortDirection.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
+    <Compile Include="Language.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

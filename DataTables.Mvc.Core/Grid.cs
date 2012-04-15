@@ -31,7 +31,7 @@ namespace DataTables.Mvc.Core
         private string _paginationType;
         private ServerMode _serverMode;
         private string _ajaxDataProperty;
-        private string _emptyTable;
+        private Language _language;
 
         public Grid(string selector)
         {
@@ -161,9 +161,9 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Grid EmptyTableMessage(string message)
+        public Grid Language(Language language)
         {
-            _emptyTable = message;
+            _language = language;
 
             return this;
         }
@@ -237,8 +237,10 @@ namespace DataTables.Mvc.Core
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
 
-            if (!String.IsNullOrWhiteSpace(_emptyTable))
-                dataTable.AppendLine(String.Format("\"sEmptyTable\": \"{0}\",", _emptyTable));
+            if (_language != null)
+            {
+                dataTable.AppendLine(_language.ToString());
+            }
 
             //Handle all the columns
             //Open the column array
