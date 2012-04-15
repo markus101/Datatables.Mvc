@@ -31,6 +31,7 @@ namespace DataTables.Mvc.Core
         private string _paginationType;
         private ServerMode _serverMode;
         private string _ajaxDataProperty;
+        private string _emptyTable;
 
         public Grid(string selector)
         {
@@ -160,6 +161,13 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Grid EmptyTableMessage(string message)
+        {
+            _emptyTable = message;
+
+            return this;
+        }
+
         /// <summary>
         /// Creates and returns the javascript to initialize the grid
         /// </summary>
@@ -228,6 +236,9 @@ namespace DataTables.Mvc.Core
 
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
+
+            if (!String.IsNullOrWhiteSpace(_emptyTable))
+                dataTable.AppendLine(String.Format("\"sEmptyTable\": \"{0}\",", _emptyTable));
 
             //Handle all the columns
             //Open the column array
