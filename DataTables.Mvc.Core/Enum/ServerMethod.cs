@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DataTables.Mvc.Core.Enum
+namespace DataTables.Mvc.Core
 {
-    public enum ServerMode
+    public enum ServerMethod
     {
         GET,
         POST

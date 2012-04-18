@@ -29,7 +29,7 @@ namespace DataTables.Mvc.Core
         private List<KeyValuePair<int, SortDirection>> _sorting;
         private string _rowCreated;
         private string _paginationType;
-        private ServerMode _serverMode;
+        private ServerMethod? _serverMethod;
         private string _ajaxDataProperty;
         private Language _language;
         private string _dom;
@@ -143,9 +143,9 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Grid ServerMode(ServerMode serverMode)
+        public Grid ServerMethod(ServerMethod serverMethod)
         {
-            _serverMode = serverMode;
+            _serverMethod = serverMethod;
             return this;
         }
 
@@ -240,7 +240,10 @@ namespace DataTables.Mvc.Core
 
             //Use GET or POST if assigned
             if (!String.IsNullOrWhiteSpace(_ajaxSource))
-                dataTable.AppendLine(String.Format("\"sServerMethod\": \"{0}\",", _serverMode));
+            {
+                if (_serverMethod != null)
+                    dataTable.AppendLine(String.Format("\"sServerMethod\": \"{0}\",", _serverMethod));
+            }
 
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
