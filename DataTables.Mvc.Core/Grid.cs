@@ -240,13 +240,13 @@ namespace DataTables.Mvc.Core
 
             //Use GET or POST if assigned
             if (!String.IsNullOrWhiteSpace(_ajaxSource))
-                dataTable.AppendLine(String.Format("\"sServerMethod \": \"{0}\",", _serverMode));
+                dataTable.AppendLine(String.Format("\"sServerMethod\": \"{0}\",", _serverMode));
 
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
 
             if (!String.IsNullOrWhiteSpace(_dom))
-                dataTable.AppendLine(String.Format("\"sDom \": \"{0}\",", _dom));
+                dataTable.AppendLine(String.Format("\"sDom\": \"{0}\",", _dom));
 
             if (_language != null)
             {
