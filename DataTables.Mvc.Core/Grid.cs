@@ -32,6 +32,7 @@ namespace DataTables.Mvc.Core
         private ServerMode _serverMode;
         private string _ajaxDataProperty;
         private Language _language;
+        private string _dom;
 
         public Grid(string selector)
         {
@@ -168,6 +169,13 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Grid Dom(string dom)
+        {
+            _dom = dom;
+
+            return this;
+        }
+
         /// <summary>
         /// Creates and returns the javascript to initialize the grid
         /// </summary>
@@ -236,6 +244,9 @@ namespace DataTables.Mvc.Core
 
             if (!String.IsNullOrWhiteSpace(_rowCreated))
                 dataTable.AppendFormat("fnCreatedRow: function(row, aData, index) {{{0}}},", _rowCreated);
+
+            if (!String.IsNullOrWhiteSpace(_dom))
+                dataTable.AppendLine(String.Format("\"sDom \": \"{0}\",", _dom));
 
             if (_language != null)
             {

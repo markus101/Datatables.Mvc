@@ -11,6 +11,7 @@ namespace DataTables.Mvc.Core
         private string _zeroRecords;
         private string _loadingRecords;
         private string _processing;
+        private string _menuLength;
 
         public Language EmptyTable(string message)
         {
@@ -36,6 +37,12 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Language MenuLength(string menuLength)
+        {
+            _menuLength = menuLength;
+            return this;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -52,6 +59,9 @@ namespace DataTables.Mvc.Core
 
             if (!String.IsNullOrWhiteSpace(_processing))
                 sb.AppendFormat("sProcessing: \"{0}\",", _processing);
+
+            if (!String.IsNullOrWhiteSpace(_menuLength))
+                sb.AppendFormat("sMenuLength: \"{0}\",", _menuLength);
 
             //Close the column
             sb.Append(" },");
