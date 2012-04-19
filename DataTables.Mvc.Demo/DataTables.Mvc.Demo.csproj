@@ -340,6 +340,7 @@
     <Content Include="Views\Home\ComplexDataProp.cshtml" />
     <Content Include="Views\Home\Link.cshtml" />
     <Content Include="Views\Home\AdvancedModel.cshtml" />
+    <Content Include="Views\Home\NoHeaders.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

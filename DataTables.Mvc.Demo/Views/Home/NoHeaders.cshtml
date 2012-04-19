@@ -1,0 +1,32 @@
+﻿@model List<DataTables.Mvc.Demo.Models.GridTestModel>
+@using DataTables.Mvc.Core
+
+@{
+    ViewBag.Title = "NoHeaders";
+}
+
+<h2>NoHeaders</h2>
+
+<table id="testGrid">
+    <thead>
+    </thead>
+    <tbody>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <td>
+                    @row.Title
+                </td>
+                <td>
+                    @row.Description
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@(Html.GridScript("#testGrid")
+    .AddColumn(null)
+    .AddColumn(null)
+    .AddColumn(null)
+)

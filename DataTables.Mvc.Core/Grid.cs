@@ -266,7 +266,8 @@ namespace DataTables.Mvc.Core
                     if (column == null)
                         dataTable.AppendLine("null,");
 
-                    dataTable.AppendLine(column.ToString());
+                    else
+                        dataTable.AppendLine(column.ToString());
                 }
                 //Close the column array
                 dataTable.AppendLine("]");
