@@ -98,6 +98,9 @@ namespace DataTables.Mvc.Core
                 else if (_dataPropertyIsFunction)
                     sb.AppendFormat("mDataProp: function(source, type, val) {{{0}}},", _dataProperty);
                 
+                else if (_dataProperty == "NULL")
+                    sb.AppendFormat("mDataProp: null,");
+
                 else
                     sb.AppendFormat("mDataProp: '{0}',", _dataProperty);
             }
