@@ -258,13 +258,16 @@ namespace DataTables.Mvc.Core
 
             //Handle all the columns
             //Open the column array
-            dataTable.AppendLine("\"aoColumns\": [");
-            foreach (var column in _columns)
+            if (_columns.Count > 0)
             {
-                dataTable.AppendLine(column.ToString());
+                dataTable.AppendLine("\"aoColumns\": [");
+                foreach (var column in _columns)
+                {
+                    dataTable.AppendLine(column.ToString());
+                }
+                //Close the column array
+                dataTable.AppendLine("]");
             }
-            //Close the column array
-            dataTable.AppendLine("]");
 
             //End dataTable initialization
             dataTable.AppendLine("});");
