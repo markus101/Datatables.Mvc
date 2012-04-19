@@ -263,6 +263,9 @@ namespace DataTables.Mvc.Core
                 dataTable.AppendLine("\"aoColumns\": [");
                 foreach (var column in _columns)
                 {
+                    if (column == null)
+                        dataTable.AppendLine("null,");
+
                     dataTable.AppendLine(column.ToString());
                 }
                 //Close the column array
