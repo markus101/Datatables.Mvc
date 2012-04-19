@@ -287,8 +287,8 @@ namespace DataTables.Mvc.Core
             //End dataTable initialization
             dataTable.AppendLine("});");
 
-            if (_hideHeaders.HasValue)
-                dataTable.AppendLine(String.Format("$('{0}').children('thead').hide();", _selector));
+            if (_hideHeaders.HasValue && _hideHeaders.Value)
+                dataTable.AppendLine(String.Format("$('{0}').children('thead').remove();", _selector));
 
             // End document.ready()
             dataTable.AppendLine("});");
