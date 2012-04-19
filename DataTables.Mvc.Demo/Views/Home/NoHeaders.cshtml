@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         @foreach(var row in Model)
-        {
+        {           
             <tr>
                 <td>
                     @row.Title
@@ -28,5 +28,5 @@
 @(Html.GridScript("#testGrid")
     .AddColumn(null)
     .AddColumn(null)
-    .AddColumn(null)
+    .HideHeaders(true)
 )

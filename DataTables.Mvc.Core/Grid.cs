@@ -33,6 +33,7 @@ namespace DataTables.Mvc.Core
         private string _ajaxDataProperty;
         private Language _language;
         private string _dom;
+        private bool? _hideHeaders;
 
         public Grid(string selector)
         {
@@ -176,6 +177,13 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Grid HideHeaders(bool hideHeaders)
+        {
+            _hideHeaders = hideHeaders;
+
+            return this;
+        }
+
         /// <summary>
         /// Creates and returns the javascript to initialize the grid
         /// </summary>
@@ -264,17 +272,23 @@ namespace DataTables.Mvc.Core
                 foreach (var column in _columns)
                 {
                     if (column == null)
-                        dataTable.AppendLine("null,");
+                    {
+                        dataTable.AppendLine("null,");    
+                    }
 
                     else
                         dataTable.AppendLine(column.ToString());
                 }
+                dataTable.Remove(dataTable.ToString().LastIndexOf(','), 1);
                 //Close the column array
                 dataTable.AppendLine("]");
             }
 
             //End dataTable initialization
             dataTable.AppendLine("});");
+
+            if (_hideHeaders.HasValue)
+                dataTable.AppendLine(String.Format("$('{0}').children('thead').hide();", _selector));
 
             // End document.ready()
             dataTable.AppendLine("});");
