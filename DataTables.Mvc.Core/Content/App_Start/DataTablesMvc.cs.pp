@@ -1,11 +1,6 @@
 ﻿using DataTables.Mvc.Core.Helpers;
-using DataTables.Mvc.Core.Models﻿;
-using System;
-using System.Web;
+using DataTables.Mvc.Core.Models;
 using System.Web.Mvc;
-using System.Linq;
-using Microsoft.Web.Infrastructure;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof($rootnamespace$.App_Start.DataTablesModelBinderActivator), "Start")]
 
