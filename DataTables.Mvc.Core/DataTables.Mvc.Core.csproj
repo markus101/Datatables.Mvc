@@ -57,15 +57,21 @@
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
     <Compile Include="Language.cs" />
-    <None Include="Models\DataTablesParams.cs.pp" />
+    <None Include="Models\DataTablesParams.cs.pp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enum\ServerMethod.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\App_Start\DataTablesMvc.cs.pp" />
+    <None Include="Content\App_Start\DataTablesMvc.cs.pp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DataTables.Mvc.Core.nuspec" />
     <None Include="packages.config" />
-    <None Include="tools\install.ps1" />
+    <None Include="tools\install.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
