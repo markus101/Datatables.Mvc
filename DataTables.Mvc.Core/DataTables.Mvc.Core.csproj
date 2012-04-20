@@ -57,9 +57,7 @@
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
     <Compile Include="Language.cs" />
-    <None Include="Models\DataTablesParams.cs.pp">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Compile Include="Models\DataTablesParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enum\ServerMethod.cs" />
   </ItemGroup>

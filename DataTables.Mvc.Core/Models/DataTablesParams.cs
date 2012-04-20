@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace $rootnamespace$.Models
+namespace DataTables.Mvc.Core.Models
 {
     public class DataTablesParams
     {
