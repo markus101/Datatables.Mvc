@@ -62,7 +62,9 @@
     <Compile Include="Enum\ServerMethod.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\App_Start\DataTablesMvc.cs.pp" />
+    <None Include="Content\App_Start\DataTablesMvc.cs.pp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DataTables.Mvc.Core.nuspec" />
     <None Include="packages.config" />
     <None Include="tools\install.ps1">
