@@ -1,4 +1,5 @@
-﻿﻿using System;
+﻿using DataTables.Mvc.Core.Models﻿
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace $rootnamespace$.App_Start
     {
         public static void PreStart()
         {
-            if (!ModelBinders.Binders.ContainsKey(typeof(DataTables.Mvc.Core.DataTablesParams)))
-                ModelBinders.Binders.Add(typeof(DataTables.Mvc.Core.DataTablesParams), new DataTablesModelBinder());
+            if (!ModelBinders.Binders.ContainsKey(typeof(DataTablesParams)))
+                ModelBinders.Binders.Add(typeof(DataTablesParams), new DataTablesModelBinder());
         }
     }
 }
