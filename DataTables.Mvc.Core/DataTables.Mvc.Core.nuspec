@@ -1,0 +1,25 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>DataTables.Mvc</id>
+    <version>0.1.0.10</version>
+    <title>DataTables.Mvc</title>
+    <authors>Mark McDowall</authors>
+    <owners>Mark McDowall</owners>
+	<projectUrl>https://github.com/markus101/Datatables.Mvc</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Description</description>
+    <copyright>Copyright © 2012</copyright>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="4.0.8" />
+	  <dependency id="WebActivator" version="1.5" />
+    </dependencies>
+	<frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.Web.Infrastructure" targetFramework=".NETFramework4.0" />
+	</frameworkAssemblies>
+  </metadata>
+  <files>
+	<file src="Content\App_Start\DataTablesParams.cs.pp" target="Models"/>
+	<file src="Content\App_Start\DataTablesMvc.cs.pp" target="Content\App_Start"/>
+	<file src="tools\install.ps1" target="tools\install.ps1" />
+</package>
