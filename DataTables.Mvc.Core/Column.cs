@@ -75,6 +75,28 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Column Image(string image, string sortData = null)
+        {
+            image = image.Replace("{", "' + source[\"").Replace("}", "\"] + '");
+
+            var builder = new StringBuilder();
+
+            builder.AppendLine("if (type === 'display' || type === 'filter') {");
+            builder.AppendLine(String.Format("return '<img src=\"{0}\" />';", image));
+            builder.AppendLine("}");
+
+            if (!String.IsNullOrEmpty(sortData))
+                builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
+
+            else
+                builder.AppendLine(String.Format("return {0};", image));
+
+            _dataProperty = builder.ToString();
+            _dataPropertyIsFunction = true;
+
+            return this;
+        }
+
         public Column DisplayAndSort(string displayData, string sortData)
         {
             var builder = new StringBuilder();
