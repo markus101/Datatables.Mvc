@@ -75,6 +75,21 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Column DisplayAndSort(string displayData, string sortData)
+        {
+            var builder = new StringBuilder();
+
+            builder.AppendLine("if (type === 'display' || type === 'filter') {");
+            builder.AppendLine(String.Format("return source[\"{0)\"];", displayData));
+            builder.AppendLine("}");
+            builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
+
+            _dataProperty = builder.ToString();
+            _dataPropertyIsFunction = true;
+
+            return this;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
