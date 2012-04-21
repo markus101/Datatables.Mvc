@@ -80,7 +80,7 @@ namespace DataTables.Mvc.Core
             var builder = new StringBuilder();
 
             builder.AppendLine("if (type === 'display' || type === 'filter') {");
-            builder.AppendLine(String.Format("return source[\"{0)\"];", displayData));
+            builder.AppendLine(String.Format("return source[\"{0}\"];", displayData));
             builder.AppendLine("}");
             builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
 
