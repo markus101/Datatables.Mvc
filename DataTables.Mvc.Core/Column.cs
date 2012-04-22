@@ -62,6 +62,7 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        [Obsolete("Use DataProperty with a function instead")]
         public Column RenderFunction(string renderFunction)
         {
             _renderFunction = renderFunction;
@@ -70,40 +71,42 @@ namespace DataTables.Mvc.Core
 
         public Column Link(string url, string text)
         {
-            url = url.Replace("{", "' + row.aData[\"").Replace("}", "\"] + '");
-            text = text.Replace("{", "' + row.aData[\"").Replace("}", "\"] + '").Trim('\'', '+', ' ');
+            var builder = new StringBuilder();
+            builder.AppendLine("if (type === 'display' || type === 'filter') {");
+            builder.AppendLine(String.Format("return '<a href=\"{0}\"> {1} </a>';", ReplaceVariables(url), ReplaceVariables(text)));
+            builder.AppendLine("}");
+            builder.AppendLine(String.Format("return '{0}';", ReplaceVariables(text)));
 
-            _renderFunction = String.Format("return '<a href=\"{0}\">' + {1} + '</a>';", url, text);
+            _dataProperty = builder.ToString();
+            _dataPropertyIsFunction = true;
             return this;
         }
 
         public Column Image(string imageUrl, object imgAttributes, string sortData = null)
         {
             imageUrl = imageUrl.Replace("{", "' + source[\"").Replace("}", "\"] + '");
-            var dict = new Dictionary<string, object>();
+            var imgAttributesDictionary = new RouteValueDictionary(imgAttributes);  
 
-            var tagBuilder = new TagBuilder("img");
-            tagBuilder.MergeAttribute("src", imageUrl);
-            var imgAttributesDictionary = new RouteValueDictionary(imgAttributes);
+            var imageBuilder = new StringBuilder();
+            imageBuilder.Append(String.Format("<img src=\"{0}\"", imageUrl));
 
             foreach (var att in imgAttributesDictionary)
-                dict.Add(att.Key, ReplaceVariables(att.Value));
+                imageBuilder.Append(String.Format(" {0}=\"{1}\"", att.Key, ReplaceVariables(att.Value)));
 
-            imgAttributesDictionary = new RouteValueDictionary(dict);
-            tagBuilder.MergeAttributes(imgAttributesDictionary);
+            imageBuilder.Append("/>");
 
             var builder = new StringBuilder();
 
             builder.AppendLine("if (type === 'display' || type === 'filter') {");
 
-            builder.AppendLine(String.Format("return '{0}';", tagBuilder));
+            builder.AppendLine(String.Format("return '{0}';", imageBuilder));
             builder.AppendLine("}");
 
             if (!String.IsNullOrEmpty(sortData))
                 builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
 
             else
-                builder.AppendLine(String.Format("return {0};", imageUrl));
+                builder.AppendLine(String.Format("return \"{0}\";", imageUrl));
 
             _dataProperty = builder.ToString();
             _dataPropertyIsFunction = true;

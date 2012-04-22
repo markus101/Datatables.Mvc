@@ -48,6 +48,13 @@ namespace DataTables.Mvc.Demo.Controllers
             return View(GetGridModels());
         }
 
+        public ActionResult Image()
+        {
+            var model = GetGridModels();
+
+            return View(model);
+        }
+
         private List<GridTestModel> GetGridModels()
         {
             var models = new List<GridTestModel>();
