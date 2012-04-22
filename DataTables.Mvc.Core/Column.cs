@@ -75,16 +75,29 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Column Image(string image, string alt, string title, string sortData = null)
+        public Column Image(string image, string alt, string title = null, string classes = null, string sortData = null)
         {
             image = image.Replace("{", "' + source[\"").Replace("}", "\"] + '");
             alt = alt.Replace("{", "' + source[\"").Replace("}", "\"] + '");
             title = title.Replace("{", "' + source[\"").Replace("}", "\"] + '");
+            classes = classes.Replace("{", "' + source[\"").Replace("}", "\"] + '");
+
+            var imageTag = new StringBuilder();
+            imageTag.Append(String.Format("<img src=\"{0}\" alt=\"{1}\"", image, alt));
+            
+            if (!String.IsNullOrWhiteSpace(title))
+                imageTag.Append(String.Format(" title=\"{0}\"", title));
+
+            if (!String.IsNullOrWhiteSpace(classes))
+                imageTag.Append(String.Format(" class=\"{0}\"", classes));
+
+            imageTag.Append("/>");
 
             var builder = new StringBuilder();
 
             builder.AppendLine("if (type === 'display' || type === 'filter') {");
-            builder.AppendLine(String.Format("return '<img src=\"{0}\" alt=\"{1}\" title=\"{2}\"/>';", image, alt, title));
+
+            builder.AppendLine(String.Format("return '{0}';", imageTag));
             builder.AppendLine("}");
 
             if (!String.IsNullOrEmpty(sortData))
