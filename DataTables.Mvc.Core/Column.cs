@@ -77,7 +77,7 @@ namespace DataTables.Mvc.Core
             linkBuilder.Append(String.Format("<a href=\"{0}\"", ReplaceVariables(url)));
 
             foreach (var att in htmlAttributesDictionary)
-                linkBuilder.Append(String.Format(" {0}=\"{1}\"", att.Key, ReplaceVariables(att.Value)));
+                linkBuilder.Append(String.Format(" {0}=\"{1}\"", CleanAttributeName(att.Key), ReplaceVariables(att.Value)));
 
             linkBuilder.Append(String.Format(">{0}</a>", ReplaceVariables(text)));
 
@@ -101,7 +101,7 @@ namespace DataTables.Mvc.Core
             imageBuilder.Append(String.Format("<img src=\"{0}\"", imageUrl));
 
             foreach (var att in imgAttributesDictionary)
-                imageBuilder.Append(String.Format(" {0}=\"{1}\"", att.Key, ReplaceVariables(att.Value)));
+                imageBuilder.Append(String.Format(" {0}=\"{1}\"", CleanAttributeName(att.Key), ReplaceVariables(att.Value)));
 
             imageBuilder.Append("/>");
 
@@ -196,6 +196,14 @@ namespace DataTables.Mvc.Core
                 return value.ToString().Replace("{", "' + source[\"").Replace("}", "\"] + '");
 
             return value;
+        }
+
+        internal string CleanAttributeName(string attribute)
+        {
+            if (attribute.StartsWith("data_"))
+                return attribute.Replace("data_", "data-");
+
+            return attribute;
         }
     }
 }
