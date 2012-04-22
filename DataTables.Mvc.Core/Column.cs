@@ -69,11 +69,21 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Column Link(string url, string text)
+        public Column Link(string url, string text, object htmlAttributes)
         {
+            var htmlAttributesDictionary = new RouteValueDictionary(htmlAttributes);
+
+            var linkBuilder = new StringBuilder();
+            linkBuilder.Append(String.Format("<a href=\"{0}\"", ReplaceVariables(url)));
+
+            foreach (var att in htmlAttributesDictionary)
+                linkBuilder.Append(String.Format(" {0}=\"{1}\"", att.Key, ReplaceVariables(att.Value)));
+
+            linkBuilder.Append(String.Format(">{0}</a>", ReplaceVariables(text)));
+
             var builder = new StringBuilder();
             builder.AppendLine("if (type === 'display' || type === 'filter') {");
-            builder.AppendLine(String.Format("return '<a href=\"{0}\"> {1} </a>';", ReplaceVariables(url), ReplaceVariables(text)));
+            builder.AppendLine(String.Format("return '{0}';", linkBuilder));
             builder.AppendLine("}");
             builder.AppendLine(String.Format("return '{0}';", ReplaceVariables(text)));
 
@@ -85,7 +95,7 @@ namespace DataTables.Mvc.Core
         public Column Image(string imageUrl, object imgAttributes, string sortData = null)
         {
             imageUrl = imageUrl.Replace("{", "' + source[\"").Replace("}", "\"] + '");
-            var imgAttributesDictionary = new RouteValueDictionary(imgAttributes);  
+            var imgAttributesDictionary = new RouteValueDictionary(imgAttributes);
 
             var imageBuilder = new StringBuilder();
             imageBuilder.Append(String.Format("<img src=\"{0}\"", imageUrl));
