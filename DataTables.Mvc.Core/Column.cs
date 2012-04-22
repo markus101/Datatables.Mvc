@@ -201,7 +201,7 @@ namespace DataTables.Mvc.Core
         internal string CleanAttributeName(string attribute)
         {
             if (attribute.StartsWith("data_"))
-                return attribute.Replace("data_", "data-");
+                return attribute.Replace('_', '-');
 
             return attribute;
         }
