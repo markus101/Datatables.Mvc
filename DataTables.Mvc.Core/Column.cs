@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Routing;
+using System.Web.Mvc;
 
 namespace DataTables.Mvc.Core
 {
@@ -75,36 +77,33 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Column Image(string image, string alt, string title = null, string classes = null, string sortData = null)
+        public Column Image(string imageUrl, object imgAttributes, string sortData = null)
         {
-            image = image.Replace("{", "' + source[\"").Replace("}", "\"] + '");
-            alt = alt.Replace("{", "' + source[\"").Replace("}", "\"] + '");
-            title = title.Replace("{", "' + source[\"").Replace("}", "\"] + '");
-            classes = classes.Replace("{", "' + source[\"").Replace("}", "\"] + '");
+            imageUrl = imageUrl.Replace("{", "' + source[\"").Replace("}", "\"] + '");
+            var dict = new Dictionary<string, object>();
 
-            var imageTag = new StringBuilder();
-            imageTag.Append(String.Format("<img src=\"{0}\" alt=\"{1}\"", image, alt));
-            
-            if (!String.IsNullOrWhiteSpace(title))
-                imageTag.Append(String.Format(" title=\"{0}\"", title));
+            var tagBuilder = new TagBuilder("img");
+            tagBuilder.MergeAttribute("src", imageUrl);
+            var imgAttributesDictionary = new RouteValueDictionary(imgAttributes);
 
-            if (!String.IsNullOrWhiteSpace(classes))
-                imageTag.Append(String.Format(" class=\"{0}\"", classes));
+            foreach (var att in imgAttributesDictionary)
+                dict.Add(att.Key, ReplaceVariables(att.Value));
 
-            imageTag.Append("/>");
+            imgAttributesDictionary = new RouteValueDictionary(dict);
+            tagBuilder.MergeAttributes(imgAttributesDictionary);
 
             var builder = new StringBuilder();
 
             builder.AppendLine("if (type === 'display' || type === 'filter') {");
 
-            builder.AppendLine(String.Format("return '{0}';", imageTag));
+            builder.AppendLine(String.Format("return '{0}';", tagBuilder));
             builder.AppendLine("}");
 
             if (!String.IsNullOrEmpty(sortData))
                 builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
 
             else
-                builder.AppendLine(String.Format("return {0};", image));
+                builder.AppendLine(String.Format("return {0};", imageUrl));
 
             _dataProperty = builder.ToString();
             _dataPropertyIsFunction = true;
@@ -176,6 +175,14 @@ namespace DataTables.Mvc.Core
             sb.Append(" },");
 
             return sb.ToString();//.Remove(sb.ToString().LastIndexOf(','), 1);
+        }
+
+        internal object ReplaceVariables(object value)
+        {
+            if (value.ToString().Contains("{") && value.ToString().Contains("}"))
+                return value.ToString().Replace("{", "' + source[\"").Replace("}", "\"] + '");
+
+            return value;
         }
     }
 }
