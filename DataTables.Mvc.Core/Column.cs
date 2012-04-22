@@ -103,10 +103,10 @@ namespace DataTables.Mvc.Core
             builder.AppendLine("}");
 
             if (!String.IsNullOrEmpty(sortData))
-                builder.AppendLine(String.Format("return source[\"{0}\"];", sortData));
+                builder.AppendLine(String.Format("return '{0}';", ReplaceVariables(sortData)));
 
             else
-                builder.AppendLine(String.Format("return \"{0}\";", imageUrl));
+                builder.AppendLine(String.Format("return '{0}';", imageUrl));
 
             _dataProperty = builder.ToString();
             _dataPropertyIsFunction = true;
