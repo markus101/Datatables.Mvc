@@ -202,6 +202,11 @@ namespace DataTables.Mvc.Core
 
         internal object ReplaceVariables(object value)
         {
+            bool boolResult;
+
+            if (bool.TryParse(value, out boolResult))
+                return boolResult.ToString().ToLower();
+
             if (value.ToString().Contains("{") && value.ToString().Contains("}"))
                 return value.ToString().Replace("{", "' + source[\"").Replace("}", "\"] + '");
 
