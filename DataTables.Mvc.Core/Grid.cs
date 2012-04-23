@@ -15,7 +15,7 @@ namespace DataTables.Mvc.Core
         private string _aData;
         private string _ajaxSource;
         private bool? _serverSide;
-        private bool? _showProcessingMessage;
+        private bool? _processing;
         private bool? _paginate;
         private bool? _changePageLength;
         private int _pageLength;
@@ -66,9 +66,9 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
-        public Grid ShowProcessingMessage(bool showProcessingMessage)
+        public Grid Processing(bool showProcessingMessage)
         {
-            _showProcessingMessage = showProcessingMessage;
+            _processing = showProcessingMessage;
             return this;
         }
 
@@ -206,8 +206,8 @@ namespace DataTables.Mvc.Core
             if (!String.IsNullOrWhiteSpace(_ajaxDataProperty))
                 dataTable.AppendLine(String.Format("\"sAjaxDataProp\": \"{0}\",", _ajaxDataProperty));
 
-            if (_showProcessingMessage.HasValue)
-                dataTable.AppendLine(String.Format("\"bProcessing\": {0},", _showProcessingMessage));
+            if (_processing.HasValue)
+                dataTable.AppendLine(String.Format("\"bProcessing\": {0},", _processing.ToString().ToLower()));
 
             if (_paginate.HasValue)
                 dataTable.AppendLine(String.Format("\"bPaginate\": {0},", _paginate.ToString().ToLower()));
