@@ -11,8 +11,8 @@
     <description>Description</description>
     <copyright>Copyright © 2012</copyright>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="4.0.8" />
-	  <dependency id="WebActivator" version="1.5" />
+      <dependency id="ServiceStack.Text" version="3.6.9" />
+	    <dependency id="WebActivator" version="1.5" />
     </dependencies>
 	<frameworkAssemblies>
       <frameworkAssembly assemblyName="Microsoft.Web.Infrastructure" targetFramework=".NETFramework4.0" />

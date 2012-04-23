@@ -12,7 +12,7 @@
 
 @(Html.GridScriptForModel("#testGrid")
     .AddColumn(new Column().DataProperty("Id").Title("ID"))
-    .AddColumn(new Column().DataProperty("Title").Title("Title").Link("Home/Details?id={Id}", "{Title}"))
+    .AddColumn(new Column().DataProperty("Title").Title("Title").Link("Home/Details?id={Id}", "{Title}", null))
     .AddColumn(new Column().DataProperty("Description").Title("Description"))
 )
 
@@ -21,6 +21,6 @@
 
 @(Html.GridScriptForModel("#testGrid2")
     .AddColumn(new Column().DataProperty("Id").Title("ID"))
-    .AddColumn(new Column().DataProperty("Title").Title("Title").Link("Home/Details?id={Id}&title={Title}", "{Title} - {Id}"))
+    .AddColumn(new Column().DataProperty("Title").Title("Title").Link("Home/Details?id={Id}&title={Title}", "{Title} - {Id}", new { data_ajax = "true", data_ajax_confirm = "Are you sure?" }))
     .AddColumn(new Column().DataProperty("Description").Title("Description"))
 )

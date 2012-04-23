@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
-using Newtonsoft.Json;
+using ServiceStack.Text;
 
 namespace DataTables.Mvc.Core
 {
@@ -47,7 +47,7 @@ namespace DataTables.Mvc.Core
             if (model == null)
                 throw new ArgumentException("Model is invalid");
 
-            return new Grid(selector).AData(JsonConvert.SerializeObject(model));
+            return new Grid(selector).AData(JsonSerializer.SerializeToString(model));
         }
 
         public static Grid GridScript(this HtmlHelper html, IEnumerable<object> collection, string selector)
@@ -55,7 +55,7 @@ namespace DataTables.Mvc.Core
             if (collection == null)
                 throw new ArgumentException("Collection is invalid");
 
-            return new Grid(selector).AData(JsonConvert.SerializeObject(collection));
+            return new Grid(selector).AData(JsonSerializer.SerializeToString(collection));
         }
 
         public static Grid GridScriptFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, string selector)
@@ -72,7 +72,7 @@ namespace DataTables.Mvc.Core
             if (value == null)
                 throw new ArgumentException("Collection is invalid");
 
-            return new Grid(selector).AData(JsonConvert.SerializeObject(value));
+            return new Grid(selector).AData(JsonSerializer.SerializeToString(value));
         }
     }
 }
