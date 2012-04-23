@@ -18,6 +18,7 @@ namespace DataTables.Mvc.Core
         private string _title;
         private string _width;
         private string _renderFunction;
+        private bool? _searchable;
 
         public Column Sortable(bool sortable)
         {
@@ -139,6 +140,12 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Column Searchable(bool searchable)
+        {
+            _searchable = searchable;
+            return this;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -180,6 +187,9 @@ namespace DataTables.Mvc.Core
 
             if (_visible.HasValue)
                 sb.AppendFormat("bVisible: {0},", _visible.ToString().ToLower());
+
+            if (_searchable.HasValue)
+                sb.AppendFormat("bSortable: {0},", _searchable.ToString().ToLower());
 
             if (!String.IsNullOrWhiteSpace(_renderFunction))
                 sb.AppendFormat("fnRender: function(row, val) {{{0}}},", _renderFunction);
