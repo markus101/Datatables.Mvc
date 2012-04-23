@@ -204,7 +204,7 @@ namespace DataTables.Mvc.Core
         {
             bool boolResult;
 
-            if (bool.TryParse(value, out boolResult))
+            if (bool.TryParse(value.ToString(), out boolResult))
                 return boolResult.ToString().ToLower();
 
             if (value.ToString().Contains("{") && value.ToString().Contains("}"))
