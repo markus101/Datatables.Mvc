@@ -34,6 +34,7 @@ namespace DataTables.Mvc.Core
         private Language _language;
         private string _dom;
         private bool? _hideHeaders;
+        private string _serverData;
 
         public Grid(string selector)
         {
@@ -184,6 +185,12 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Grid ServerData(string function)
+        {
+            _serverData = function;
+            return this;
+        }
+
         /// <summary>
         /// Creates and returns the javascript to initialize the grid
         /// </summary>
@@ -263,6 +270,9 @@ namespace DataTables.Mvc.Core
             {
                 dataTable.AppendLine(_language.ToString());
             }
+
+            if (!String.IsNullOrWhiteSpace(_serverData))
+                dataTable.AppendFormat("fnServerData: function(sSource, aoData, fnCallback) {{{0}}},", _serverData);
 
             //Handle all the columns
             //Open the column array
