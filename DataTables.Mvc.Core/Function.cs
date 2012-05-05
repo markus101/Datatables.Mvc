@@ -24,7 +24,7 @@ namespace DataTables.Mvc.Core
             var function = new StringBuilder();
 
             // Start script
-            function.AppendFormat("\"{0}\": function({1}) {{{2}}},", _dtFunctionName, String.Join(", ", _functionParams), _function);
+            function.AppendFormat("\"{0}\": return function({1}) {{{2}}},", _dtFunctionName, String.Join(", ", _functionParams), _function);
 
             // Return script + required elements
             return function.ToString();
