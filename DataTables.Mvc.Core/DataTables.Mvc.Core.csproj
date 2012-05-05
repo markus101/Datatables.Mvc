@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Column.cs" />
     <Compile Include="Enum\SortDirection.cs" />
+    <Compile Include="Function.cs" />
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
     <Compile Include="Helpers\DataTablesModelBinder.cs" />
