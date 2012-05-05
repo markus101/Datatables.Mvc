@@ -19,6 +19,7 @@ namespace DataTables.Mvc.Core
         private bool? _paginate;
         private bool? _changePageLength;
         private int _pageLength;
+        private int[] _lengthMenu;
         private bool? _filter;
         private bool? _sort;
         private bool? _showInfo;
@@ -88,6 +89,12 @@ namespace DataTables.Mvc.Core
         public Grid PageLength(int pageLength)
         {
             _pageLength = pageLength;
+            return this;
+        }
+
+        public Grid LengthMenu(int[] array)
+        {
+            _lengthMenu = array;
             return this;
         }
 
@@ -224,6 +231,9 @@ namespace DataTables.Mvc.Core
 
             if (_pageLength > 0)
                 dataTable.AppendLine(String.Format("\"iDisplayLength\": {0},", _pageLength));
+
+            if (_lengthMenu != null)
+                dataTable.AppendLine(String.Format("\"aLengthMenu\": [{0}],", String.Join(", ", _lengthMenu)));
 
             if (_filter.HasValue)
                 dataTable.AppendLine(String.Format("\"bFilter\": {0},", _filter.ToString().ToLower()));
