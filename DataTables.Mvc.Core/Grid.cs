@@ -43,6 +43,7 @@ namespace DataTables.Mvc.Core
             _selector = selector;
             _columns = new List<Column>();
             _sorting = new List<KeyValuePair<int, SortDirection>>();
+            _functions = new List<Function>();
         }
 
         public Grid AddColumn(Column column)
