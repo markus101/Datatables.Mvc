@@ -12,6 +12,10 @@ namespace DataTables.Mvc.Core
         private string _loadingRecords;
         private string _processing;
         private string _menuLength;
+        private string _info;
+        private string _infoEmpty;
+        private string _infoFiltered;
+        private string _search;
 
         public Language EmptyTable(string message)
         {
@@ -43,6 +47,30 @@ namespace DataTables.Mvc.Core
             return this;
         }
 
+        public Language Info(string info)
+        {
+            _info = info;
+            return this;
+        }
+
+        public Language InfoEmpty(string infoEmpty)
+        {
+            _infoEmpty = infoEmpty;
+            return this;
+        }
+
+        public Language InfoFiltered(string infoFiltered)
+        {
+            _infoFiltered = infoFiltered;
+            return this;
+        }
+
+        public Language Search(string search)
+        {
+            _search = search;
+            return this;
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
@@ -61,7 +89,19 @@ namespace DataTables.Mvc.Core
                 sb.AppendFormat("sProcessing: \"{0}\",", _processing);
 
             if (!String.IsNullOrWhiteSpace(_menuLength))
-                sb.AppendFormat("sMenuLength: \"{0}\",", _menuLength);
+                sb.AppendFormat("sLengthMenu: \"{0}\",", _menuLength);
+
+            if (!String.IsNullOrWhiteSpace(_info))
+                sb.AppendFormat("sInfo: \"{0}\",", _info);
+
+            if (!String.IsNullOrWhiteSpace(_infoEmpty))
+                sb.AppendFormat("sInfoEmpty: \"{0}\",", _infoEmpty);
+
+            if (!String.IsNullOrWhiteSpace(_infoFiltered))
+                sb.AppendFormat("sInfoFiltered: \"{0}\",", _infoFiltered);
+
+            if (!String.IsNullOrWhiteSpace(_search))
+                sb.AppendFormat("sSearch: \"{0}\",", _search);
 
             //Close the column
             sb.Append(" },");
