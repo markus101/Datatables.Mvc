@@ -78,6 +78,7 @@
     <Compile Include="Grid.cs" />
     <Compile Include="GridHtmlHelper.cs" />
     <Compile Include="Helpers\DataTablesModelBinder.cs" />
+    <Compile Include="Helpers\SqlBuilderHelper.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="Models\DataTablesPageRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +89,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="DataTables.Mvc.Core.nuspec" />
+    <None Include="DataTables.Mvc.nuspec" />
     <None Include="packages.config" />
     <None Include="tools\install.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
