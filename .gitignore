@@ -31,3 +31,4 @@ _ReSharper*/
 [Ll]ogs/
 [Aa]pp_Data/
 /[Pp]ackage/
+*.ncrunchsolution

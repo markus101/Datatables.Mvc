@@ -10,8 +10,8 @@ namespace $rootnamespace$.App_Start
     {
         public static void Start()
         {
-            if (!ModelBinders.Binders.ContainsKey(typeof(DataTablesParams)))
-                ModelBinders.Binders.Add(typeof(DataTablesParams), new DataTablesModelBinder());
+            if (!ModelBinders.Binders.ContainsKey(typeof(DataTablesPageRequest)))
+                ModelBinders.Binders.Add(typeof(DataTablesPageRequest), new DataTablesModelBinder());
         }
     }
 }
