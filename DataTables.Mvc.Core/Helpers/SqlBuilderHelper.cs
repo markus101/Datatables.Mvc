@@ -8,7 +8,7 @@ namespace DataTables.Mvc.Core.Helpers
 {
     public static class SqlBuilderHelper
     {
-        private static IEnumerable<string> GetSearchClause(DataTablesPageRequest pageRequest)
+        public static IEnumerable<string> GetSearchClause(DataTablesPageRequest pageRequest)
         {
             var columns = pageRequest.ColumnNames.Split(',');
 
@@ -19,7 +19,7 @@ namespace DataTables.Mvc.Core.Helpers
             }
         }
 
-        private static IEnumerable<string> GetOrderByClause(DataTablesPageRequest pageRequest)
+        public static IEnumerable<string> GetOrderByClause(DataTablesPageRequest pageRequest)
         {
             var columns = pageRequest.ColumnNames.Split(',');
 
